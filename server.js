@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const requireDir = require("require-dir");
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+const myEnv = dotenv.config();
 
 // Iniciando o app
 const app = express();
@@ -10,7 +13,7 @@ app.use(cors());
 
 // Iniciando o DB
 mongoose.connect(
-    'mongodb://localhost:27017/nodeapi', 
+    process.env.MONGO_URL, 
     { useNewUrlParser: true }
 );
 
